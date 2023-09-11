@@ -6,6 +6,8 @@ public class PenguinMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 2f;
     [SerializeField] private float rotationSpeed = 20f;
+    [SerializeField] private float jumpForce = 50f;
+    [SerializeField] private Rigidbody penguinBody;
     void Update()
     {
         if (Input.GetAxis("Vertical") != 0)
@@ -18,6 +20,11 @@ public class PenguinMovement : MonoBehaviour
         {
             Vector3 direction = transform.up * Input.GetAxis("Horizontal");
             transform.Rotate(direction * rotationSpeed * Time.deltaTime);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            penguinBody.AddForce(Vector3.up * jumpForce);
         }
     }
 }
