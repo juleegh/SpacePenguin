@@ -6,6 +6,11 @@ public class Soul : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
+        Health health = other.GetComponent<Health>();
+        if (health != null)
+        {
+            health.IncreaseHealth(5);
+            Destroy(gameObject);
+        }
     }
 }
