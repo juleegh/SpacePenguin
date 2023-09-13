@@ -9,16 +9,19 @@ public class Health : MonoBehaviour
     public void IncreaseHealth(float healthIncrease)
     {
         currentHealth += healthIncrease;
-        Debug.LogError(currentHealth);
     }
 
     public void TakeDamage(float damageTaken)
     {
         currentHealth -= damageTaken;
-        Debug.LogError(currentHealth);
         if (currentHealth <= 0)
         {
             Destroy(gameObject);
         }
+    }
+
+    public float GetCurrentHealth()
+    {
+        return currentHealth;
     }
 }
