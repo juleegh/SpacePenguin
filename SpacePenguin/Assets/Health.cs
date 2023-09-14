@@ -16,6 +16,11 @@ public class Health : MonoBehaviour
         currentHealth -= damageTaken;
         if (currentHealth <= 0)
         {
+            if (GetComponent<PigeonPatrol>() != null)
+            {
+                // this means that this health component belongs to an enemy, so I can increase the death counter
+                EnemyManager.GetInstance().IncreaseDeadEnemies();
+            }
             Destroy(gameObject);
         }
     }
