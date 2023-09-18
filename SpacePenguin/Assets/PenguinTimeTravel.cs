@@ -1,11 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PenguinTimeTravel : MonoBehaviour
 {
     List<PenguinState> saveStates;
-    
+
     private void Start()
     {
         saveStates = new List<PenguinState>();
@@ -13,7 +12,7 @@ public class PenguinTimeTravel : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             float currentHealth = GetComponent<Health>().GetCurrentHealth();
             PenguinState penguinState = new PenguinState(transform.position, transform.eulerAngles, currentHealth);

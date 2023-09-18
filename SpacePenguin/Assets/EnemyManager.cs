@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
@@ -40,7 +38,8 @@ public class EnemyManager : MonoBehaviour
     public void IncreaseDeadEnemies()
     {
         deadEnemies++;
-        if(deadEnemies / totalEnemies > aggroThreshold & !thresholdHasReached)
+        float enemiesPercentage = ((float) deadEnemies / (float)totalEnemies);
+        if (enemiesPercentage >= aggroThreshold & !thresholdHasReached)
         {
             thresholdHasReached = true;
             ThresholdReached();

@@ -1,16 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Pigeon : MonoBehaviour
 {
-    [SerializeField] private NavMeshAgent navMeshAgent; 
-    [SerializeField] private MeshRenderer meshRenderer; 
-    [SerializeField] private Color aggroColor; 
+    [SerializeField] private NavMeshAgent navMeshAgent;
+    [SerializeField] private MeshRenderer meshRenderer;
+    [SerializeField] private Color aggroColor;
     void Start()
     {
         EnemyManager.ThresholdReached += GoAggro;
+    }
+    void OnDestroy()
+    {
+        EnemyManager.ThresholdReached -= GoAggro;
     }
 
     private void GoAggro()
