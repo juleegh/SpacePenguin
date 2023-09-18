@@ -7,6 +7,11 @@ public class EnemyManager : MonoBehaviour
     private static EnemyManager instance;
     private int totalEnemies;
     private int deadEnemies;
+    [SerializeField] private float aggroThreshold = 0.8f;
+
+    public delegate void EnemyEvents();
+    public static EnemyEvents ThresholdReached;
+    private bool thresholdHasReached = false;
 
     private void Awake()
     {
@@ -35,6 +40,11 @@ public class EnemyManager : MonoBehaviour
     public void IncreaseDeadEnemies()
     {
         deadEnemies++;
+        if(deadEnemies / totalEnemies > aggroThreshold & !thresholdHasReached)
+        {
+            thresholdHasReached = true;
+            ThresholdReached();
+        }
     }
 
     public int GetDeadEnemies()
