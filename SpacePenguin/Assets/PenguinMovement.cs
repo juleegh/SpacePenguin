@@ -33,4 +33,9 @@ public class PenguinMovement : MonoBehaviour
         bool result = Physics.SphereCast(transform.position, 0.15f, -transform.up, out hit, 1);
         return result;
     }
+
+    public void ModifySpeed(float newSpeed)
+    {
+        speed += newSpeed;
+    }
 }
