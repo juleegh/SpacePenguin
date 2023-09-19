@@ -20,5 +20,6 @@ public class Pigeon : MonoBehaviour
         navMeshAgent.speed *= 2f;
         meshRenderer.material.color = aggroColor;
         EnemyManager.ThresholdReached -= GoAggro;
+
     }
 }
