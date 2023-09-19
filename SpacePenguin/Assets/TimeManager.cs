@@ -33,9 +33,12 @@ public class TimeManager : MonoBehaviour
         float previousScore = PlayerPrefs.GetFloat("MinimumTime", -1);
         
         // If I have never played the game before, theres no score
-        if (previousScore > 0)
+        if (previousScore < 0)
         {
-            highScore = elapsedTime;
+            PlayerPrefs.SetFloat("MinimumTime", elapsedTime);
+            gameOver.SetActive(false);
+            gameOverWithHighscore.SetActive(true);
+            highscoreText.text = "Congrats! new highscore: " + ((int) elapsedTime);
         }
         else
         {
@@ -51,7 +54,7 @@ public class TimeManager : MonoBehaviour
                 gameOverWithHighscore.SetActive(true);
 
                 PlayerPrefs.SetFloat("MinimumTime", elapsedTime);
-                highscoreText.text = "Congrats! new highscore: " + elapsedTime;
+                highscoreText.text = "Congrats! new highscore: " + ((int)elapsedTime);
                 // TODO: do the ui to say "congrats! new highscore"
             }
         }
