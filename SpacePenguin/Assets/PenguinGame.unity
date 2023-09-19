@@ -2014,7 +2014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd8ef4c1dda847243893e15f071368fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aggroThreshold: 0.8
+  aggroThreshold: 0.5
 --- !u!114 &1815398819
 MonoBehaviour:
   m_ObjectHideFlags: 0
