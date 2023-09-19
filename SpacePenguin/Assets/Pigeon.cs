@@ -5,9 +5,10 @@ public class Pigeon : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent navMeshAgent;
     [SerializeField] private MeshRenderer meshRenderer;
-    [SerializeField] private Color aggroColor;
+    [SerializeField] private EnemyQualities enemyQualities;
     void Start()
     {
+        navMeshAgent.speed = enemyQualities.GetRegularSpeed();
         EnemyManager.ThresholdReached += GoAggro;
     }
     void OnDestroy()
@@ -17,8 +18,8 @@ public class Pigeon : MonoBehaviour
 
     private void GoAggro()
     {
-        navMeshAgent.speed *= 2f;
-        meshRenderer.material.color = aggroColor;
+        navMeshAgent.speed = enemyQualities.GetAggroSpeed();
+        meshRenderer.material.color = enemyQualities.GetAggroColor();
         EnemyManager.ThresholdReached -= GoAggro;
 
     }
