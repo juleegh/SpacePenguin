@@ -282,7 +282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   rotationSpeed: 50
-  jumpForce: 100
+  jumpForce: 300
   penguinBody: {fileID: 7869684716230122215}
 --- !u!136 &5080666308966042410
 CapsuleCollider:
