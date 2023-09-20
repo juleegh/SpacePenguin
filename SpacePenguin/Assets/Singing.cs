@@ -7,6 +7,9 @@ public class Singing : MonoBehaviour
     [SerializeField] private float singRadius;
     [SerializeField] private GameObject singVolume;
     [SerializeField] private GameObject singRay;
+    [SerializeField] private AudioSource voice;
+    [SerializeField] private AudioClip voiceClip;
+
     private bool isShowingRay;
     private void Update()
     {
@@ -16,6 +19,7 @@ public class Singing : MonoBehaviour
             if (!isShowingRay)
             {
                 StartCoroutine(ShowRay());
+                voice.PlayOneShot(voiceClip);
             }
         }
 
@@ -57,11 +61,10 @@ public class Singing : MonoBehaviour
 
     private IEnumerator ShowRay()
     {
-        if (!singRay.activeInHierarchy)
-        {
-            singRay.SetActive(true);
-            yield return new WaitForSeconds(1);
-            singRay.SetActive(false);
-        }
+        isShowingRay = true;
+        singRay.SetActive(true);
+        yield return new WaitForSeconds(1);
+        singRay.SetActive(false);
+        isShowingRay = false;
     }
 }

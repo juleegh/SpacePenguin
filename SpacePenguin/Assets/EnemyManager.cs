@@ -11,6 +11,7 @@ public class EnemyManager : MonoBehaviour
     public delegate void EnemyEvents();
     public static EnemyEvents ThresholdReached;
     public static EnemyEvents PlayerWonGame;
+    public static EnemyEvents EnemyKilled;
 
     private void Awake()
     {
@@ -39,8 +40,9 @@ public class EnemyManager : MonoBehaviour
     public void IncreaseDeadEnemies()
     {
         deadEnemies++;
-        float enemiesPercentage = ((float) deadEnemies / (float)totalEnemies);
-        if (enemiesPercentage >= aggroThreshold & !thresholdHasReached)
+        EnemyKilled();
+        
+        if (GetKillPercentage() >= aggroThreshold & !thresholdHasReached)
         {
             thresholdHasReached = true;
             ThresholdReached();
@@ -60,5 +62,10 @@ public class EnemyManager : MonoBehaviour
     public int GetTotalEnemies()
     {
         return totalEnemies;
+    }
+
+    public float GetKillPercentage()
+    {
+        return  ((float)deadEnemies / (float)totalEnemies);
     }
 }
