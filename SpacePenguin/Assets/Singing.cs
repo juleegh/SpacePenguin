@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Singing : MonoBehaviour
@@ -6,11 +7,16 @@ public class Singing : MonoBehaviour
     [SerializeField] private float singRadius;
     [SerializeField] private GameObject singVolume;
     [SerializeField] private GameObject singRay;
+    private bool isShowingRay;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
             SingleSinging();
+            if (!isShowingRay)
+            {
+                StartCoroutine(ShowRay());
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.X))
@@ -18,7 +24,6 @@ public class Singing : MonoBehaviour
             MultipleSinging();
         }
 
-        singRay.SetActive(Input.GetKey(KeyCode.Z));
         singVolume.SetActive(Input.GetKey(KeyCode.X));
     }
 
@@ -47,6 +52,16 @@ public class Singing : MonoBehaviour
                 Health health = hitCollider.GetComponent<Health>();
                 health.TakeDamage(10);
             }
+        }
+    }
+
+    private IEnumerator ShowRay()
+    {
+        if (!singRay.activeInHierarchy)
+        {
+            singRay.SetActive(true);
+            yield return new WaitForSeconds(1);
+            singRay.SetActive(false);
         }
     }
 }

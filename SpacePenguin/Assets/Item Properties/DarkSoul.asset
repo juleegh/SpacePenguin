@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62143ae4c6fa27940960d43d0f580124, type: 3}
   m_Name: DarkSoul
   m_EditorClassIdentifier: 
-  healthIncrease: 10
+  healthIncrease: -10
   speedIncrease: 0
   staminaIncrease: 0
-  colorType: {r: 1, g: 0, b: 0, a: 1}
+  colorType: {r: 0.20754719, g: 0, b: 0.1764706, a: 1}
