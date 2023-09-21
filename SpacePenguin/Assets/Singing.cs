@@ -9,6 +9,7 @@ public class Singing : MonoBehaviour
     [SerializeField] private GameObject singRay;
     [SerializeField] private AudioSource voice;
     [SerializeField] private AudioClip voiceClip;
+    [SerializeField] private Animator animator;
 
     private bool isShowingRay;
     private void Update()
@@ -20,6 +21,7 @@ public class Singing : MonoBehaviour
             {
                 StartCoroutine(ShowRay());
                 voice.PlayOneShot(voiceClip);
+                animator.SetTrigger("Singing");
             }
         }
 
